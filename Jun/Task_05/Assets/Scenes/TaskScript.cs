@@ -103,11 +103,24 @@ public class TaskScript : MonoBehaviour
 
     private int[] SortArray(int[] arr)
     {
-        for (int i = 0; i < arr.Length; i++)
+        for (int i = 0; i < arr.Length-1; i++)
         {
-            for (int j = i; j < arr.Length; j++)
+            int min = arr[i];
+            int indMin = i;
+
+            for (int j = i+1; j < arr.Length; j++)
             {
-                
+                if (arr[j] < min)
+                {
+                    min = arr[j];
+                    indMin = j;
+                }
+            }
+
+            if (indMin != i)
+            {
+                arr[indMin] = arr[i];
+                arr[i] = min;
             }
         }
 
