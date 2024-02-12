@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public Timers ImgHarvest;
     public Timers ImgFood;
-    public Image imgRaidTimer;
 
     public Text TextCountrymanCount;
     public Text TextWarriorCount;
@@ -16,11 +15,17 @@ public class GameManager : MonoBehaviour
 
     public Button HiringCountrymanButton;
     public Button HiringWarriorButton;
+    public Button ButtonPausePlay;
 
     public Image HiringCountrymanTimer;
     public Image HiringWarriorTimer;
+    public Image imgRaidTimer;
+
+    public Sprite imgPlay;
+    public Sprite imgPause;
 
     public GameObject GameOver;
+    public GameObject GameOnPause;
 
     public int CountrymanCount;
     public int WarriorCount;
@@ -42,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     public float CountrymanCreateTime;
     public float WarriorCreateTime;
+
+    private bool PauseOn = false;
 
     void Start()
     {
@@ -108,8 +115,17 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             GameOver.SetActive(true);
         }
+    }  
+    
 
-        UpdateText();
+    public void PausePlay()
+    {
+        PauseOn = !PauseOn;
+
+        GameOnPause.SetActive(PauseOn);
+
+        ButtonPausePlay.image.sprite = PauseOn ? imgPlay : imgPause;
+        Time.timeScale = PauseOn ? 0 : 1;
     }
 
     private void UpdateText()
