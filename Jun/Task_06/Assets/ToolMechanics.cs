@@ -7,10 +7,6 @@ using UnityEngine.UI;
 
 public class ToolMechanics : MonoBehaviour
 {
-    private int Pin1;
-    private int Pin2;
-    private int Pin3;
-
     private int[] pass = new int[3];
 
     [SerializeField] private Text TextPin1;
@@ -56,13 +52,9 @@ public class ToolMechanics : MonoBehaviour
             pass[i] = 0;
         }
 
-        Pin1 = 0;
-        Pin2 = 0;
-        Pin3 = 0;
-
         GeneratePass();
 
-        UpdateTextPins();
+        UpdateTextPins(0, 0, 0);
 
         WinLossPanel.SetActive(false);
     }
@@ -96,18 +88,18 @@ public class ToolMechanics : MonoBehaviour
         timerON = false;
     }
 
-    private void CheckResult()
+    private void CheckResult(int Pin1, int Pin2, int Pin3)
     {
         if (pass[0] == Pin1 && pass[1] == Pin2 && pass[2] == Pin3) Win();
     }
 
-    private void UpdateTextPins()
+    private void UpdateTextPins(int Pin1, int Pin2, int Pin3)
     {
         TextPin1.text = Pin1.ToString();
         TextPin2.text = Pin2.ToString();
         TextPin3.text = Pin3.ToString();
 
-        CheckResult();
+        CheckResult(Pin1, Pin2, Pin3);
     }
 
     private int ShiftPin(int pin)
@@ -117,17 +109,40 @@ public class ToolMechanics : MonoBehaviour
         else return pin;
     }
 
-    public void Drill()
+    public void Tools(int indexTools)
+    {
+        switch (indexTools)
+        {
+            case 0:
+                Drill(Convert.ToInt32(TextPin1.text)
+                            , Convert.ToInt32(TextPin2.text)
+                            , Convert.ToInt32(TextPin3.text));
+                break;
+            case 1:
+                Hummer(Convert.ToInt32(TextPin1.text)
+                            , Convert.ToInt32(TextPin2.text)
+                            , Convert.ToInt32(TextPin3.text));
+                break;
+            case 2:
+                Picklock(Convert.ToInt32(TextPin1.text)
+                            , Convert.ToInt32(TextPin2.text)
+                            , Convert.ToInt32(TextPin3.text));
+                break;
+            default: break;
+        }
+    }
+
+    private void Drill(int Pin1, int Pin2, int Pin3)
     {
         if (!timerON) return;
 
         Pin1 = ShiftPin(Pin1 + 1);
         Pin2 = ShiftPin(Pin2 - 1);
 
-        UpdateTextPins();
+        UpdateTextPins(Pin1, Pin2, Pin3);
     }
 
-    public void Hummer()
+    private void Hummer(int Pin1, int Pin2, int Pin3)
     {
         if (!timerON) return;
 
@@ -135,10 +150,10 @@ public class ToolMechanics : MonoBehaviour
         Pin2 = ShiftPin(Pin2 + 2);
         Pin3 = ShiftPin(Pin3 - 1);
 
-        UpdateTextPins();
+        UpdateTextPins(Pin1, Pin2, Pin3);
     }
 
-    public void Picklock()
+    private void Picklock(int Pin1, int Pin2, int Pin3)
     {
         if (!timerON) return;
 
@@ -146,7 +161,6 @@ public class ToolMechanics : MonoBehaviour
         Pin2 = ShiftPin(Pin2 + 1);
         Pin3 = ShiftPin(Pin3 + 1);
 
-        UpdateTextPins();
+        UpdateTextPins(Pin1, Pin2, Pin3);
     }
-
 }
