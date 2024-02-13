@@ -1950,7 +1950,7 @@ MonoBehaviour:
   WheatToWarrior: 1
   CountrymanCost: 3
   WarriorCost: 5
-  RaidMaxTime: 10
+  RaidMaxTime: 35
   RaidIncrease: 1
   NextRaid: 0
   ScoutingRaids: 2
