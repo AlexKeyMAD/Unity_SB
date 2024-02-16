@@ -23,9 +23,6 @@ public class FirstScript : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, positions[index], Time.deltaTime * speed);
 
-        Debug.Log(index);
-        Debug.Log(transform.position);
-
         if (transform.position == positions[index])
         {
             if (forward) index++;
