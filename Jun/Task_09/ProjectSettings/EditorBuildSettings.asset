@@ -4,5 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Superman/Superman.unity
+    guid: 486f8b78381d85647abd6d18223b5a27
+  - enabled: 1
+    path: Assets/Billiards/Billiards.unity
+    guid: 71d13d32d3a60f2429e9cc89d007fb67
+  - enabled: 1
+    path: Assets/ZeroGravitySphere/ZeroGravitySphere.unity
+    guid: 8cab6fe3188611340a64ba8aa8ef8904
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
