@@ -8,7 +8,7 @@ public class SpringScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ball")
+        if (collision.gameObject.CompareTag("Ball"))
         {
             Vector3 v = new Vector3(Random.Range(-1.5f, 1.5f), 0, Random.Range(0f, 2f));
 
