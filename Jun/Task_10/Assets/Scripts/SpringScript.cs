@@ -4,17 +4,43 @@ using UnityEngine;
 
 public class SpringScript : MonoBehaviour
 {
-    [SerializeField] private float force;
+    [SerializeField] private float timeSpring;
 
-    private void OnCollisionEnter(Collision collision)
+    private float curTime;
+
+    private bool shoot;
+
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        curTime += Time.deltaTime;
+
+        if (curTime >= timeSpring)
         {
-            Vector3 v = new Vector3(Random.Range(-1.5f, 1.5f), 0, Random.Range(0f, 2f));
+            curTime = 0;
+            PullSpring();
 
-            Debug.Log(v.ToString());
+            shoot = true;
+        }
+    }
 
-            collision.rigidbody.AddForce(v * force, ForceMode.Impulse);
+    private void PullSpring()
+    {
+        var v = transform.position;
+        v.z -= 1.2f;
+
+        transform.position = Vector3.MoveTowards(transform.position, v, 2f); 
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (shoot)
+        {
+            Debug.Log(collision.rigidbody.velocity);
+            collision.rigidbody.velocity *= 10;
+            Debug.Log(collision.rigidbody.velocity);
+            
+            collision.rigidbody.AddForce(collision.rigidbody.velocity,ForceMode.VelocityChange);
+            
         }
     }
 }
