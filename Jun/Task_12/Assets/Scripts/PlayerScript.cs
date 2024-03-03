@@ -34,6 +34,14 @@ public class PlayerScript : MonoBehaviour
         playerRB.AddForce(move * speed);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Weapon"))
+        {
+            FindObjectOfType<PausePrefab>().GoToMenu();
+        }
+    }
+
 #if UNITY_EDITOR
     [ContextMenu("Reset values")]
     public void ResetValues()
