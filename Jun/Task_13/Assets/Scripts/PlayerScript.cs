@@ -9,10 +9,13 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody playerRB;
     [SerializeField, Range(0, 10)] private int speed = 3;
     private Vector3 move;
+    public ParticleSystem ps;
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
+
+        ps.Stop();
     }
 
     // Update is called once per frame
@@ -22,6 +25,8 @@ public class PlayerScript : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         move = new Vector3(horisont, 0, vertical).normalized;
+
+        if (ps == null) Destroy(gameObject);
     }
 
     private void FixedUpdate()
@@ -32,6 +37,15 @@ public class PlayerScript : MonoBehaviour
     private void MovePlayer()
     {
         playerRB.AddForce(move * speed);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Fatal"))
+        {
+            ps.Play();
+            transform.localScale = new Vector3(.1f, .1f, .1f);
+        }
     }
 
 
