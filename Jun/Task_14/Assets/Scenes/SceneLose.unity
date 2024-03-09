@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 762390023}
   - component: {fileID: 762390022}
   - component: {fileID: 762390021}
+  - component: {fileID: 762390024}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -540,6 +541,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &762390024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762390020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53946db2e9a257d46b8c46d936ec003c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768175025
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,10 +636,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716848392}
-        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
-        m_MethodName: StarLevel
-        m_Mode: 3
+      - m_Target: {fileID: 1716848396}
+        m_TargetAssemblyTypeName: WinLosScript, Assembly-CSharp
+        m_MethodName: GoToStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -684,7 +697,7 @@ GameObject:
   - component: {fileID: 1716848395}
   - component: {fileID: 1716848394}
   - component: {fileID: 1716848393}
-  - component: {fileID: 1716848392}
+  - component: {fileID: 1716848396}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -692,20 +705,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1716848392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716848391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a62fc6461bf3949be8e6907d99617a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startCanvas: {fileID: 0}
-  menuCanvas: {fileID: 0}
 --- !u!114 &1716848393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +755,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1716848396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716848391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c0a4b45e4e6494481a4cbd390ae77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1846370505
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,10 +850,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716848392}
-        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
-        m_MethodName: StarLevel
-        m_Mode: 3
+      - m_Target: {fileID: 1716848396}
+        m_TargetAssemblyTypeName: WinLosScript, Assembly-CSharp
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
