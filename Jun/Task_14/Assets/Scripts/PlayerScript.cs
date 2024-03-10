@@ -42,22 +42,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("EndLevel"))
-        {
-            NextLevel();
-        }
-        else if (collision.transform.CompareTag("Fatal"))
+        if (collision.transform.CompareTag("Fatal"))
         {
             ps.Play();
             transform.localScale = new Vector3(.1f, .1f, .1f);
         }
-    }
-
-    public void NextLevel()
-    {
-        int ind = SceneManager.GetActiveScene().buildIndex;
-
-        SceneManager.LoadScene(ind + 1);
     }
 
     private void OnDestroy()
