@@ -11,9 +11,12 @@ public class PausePrefab : MonoBehaviour
 
     void Start()
     {
-        panel.SetActive(false);
+        if (panel != null)
+        {
+            panel.SetActive(false);
 
-        levelText.text = $"Уровень {SceneManager.GetActiveScene().buildIndex.ToString()}";
+            levelText.text = $"Уровень {SceneManager.GetActiveScene().buildIndex.ToString()}";
+        }
     }
 
     public void GamePause()
@@ -33,5 +36,15 @@ public class PausePrefab : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GoToStart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
 }

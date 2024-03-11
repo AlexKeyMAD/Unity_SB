@@ -22,8 +22,9 @@ public class DoorScript : MonoBehaviour
     public void NextLevel()
     {
         int ind = SceneManager.GetActiveScene().buildIndex;
-
-        if (ind + 1 >= SceneManager.sceneCountInBuildSettings) SceneManager.LoadScene(0); 
-        else SceneManager.LoadScene(ind + 1);
+        Debug.Log(ind);
+        //if (ind + 1 >= SceneManager.sceneCountInBuildSettings) SceneManager.LoadScene(0); 
+        //else
+        SceneManager.LoadScene(ind + 1);
     }
 }

@@ -9,19 +9,24 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody playerRB;
     [SerializeField, Range(0, 10)] private int speed = 3;
     private Vector3 move;
+    public ParticleSystem ps;
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
+
+        ps.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horisont = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         move = new Vector3(horisont, 0, vertical).normalized;
+
+        if (ps == null)
+            Destroy(gameObject);
     }
 
     private void FixedUpdate()
@@ -36,10 +41,18 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Weapon"))
+
+        if (collision.gameObject.CompareTag("DeathZone"))
         {
-            FindObjectOfType<PausePrefab>().GoToMenu();
+            ps.Play();
+            transform.localScale = new Vector3(.1f, .1f, .1f);
+            GameOver();
         }
+    }
+
+    private void GameOver()
+    {
+        FindObjectOfType<PausePrefab>().GameOver();
     }
 
 #if UNITY_EDITOR
