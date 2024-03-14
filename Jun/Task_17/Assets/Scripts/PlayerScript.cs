@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D playerRB;
-    [SerializeField, Range(0, 20)] private int speed = 3;
+    [SerializeField, Range(0, 20)] private int speed = 8;
     public Animator anim;
     public SpriteRenderer playerSR;
 
@@ -35,6 +35,24 @@ public class PlayerScript : MonoBehaviour
         {
             playerSR.flipX = horisont < 0;
             playerRB.MovePosition(playerRB.position + Vector2.right * horisont * (speed * (run ? 2 : 1)) * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            anim.SetBool("Swim", true);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            anim.SetBool("Swim", false);
         }
     }
 
